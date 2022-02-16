@@ -23,9 +23,51 @@
 \end{itemize}
 \section{Goal}
 \Large{
-We have to select the user that will perform the tour, define the locations and the payments that are charged to the users. The only constraint that we have is the maximum payment. Costs proportional to kilometers should be fairly distributed and the fixed costs should be based on declared utilities, so first we have to implement a mechanisms that lead to truthfully declare the utilities.
+We have to select the user that will perform the tour, define the locations and the payments that are charged to the users. The only constraint that we have is the maximum payment. Costs proportional to kilometers should be fairly distributed and the fixed costs should be based on declared utilities, so first we have to implement a mechanisms that lead to truthfully declare utilities.
 }
-\section{The "right" mechanism}
+\section{Mechanism choice}
+\Large{
+We can start from the \textit{Quasilinear Utility}, specifically from the definition of \textit{Quasilinear preferences}:
+\begin{quote}
+    Agents have quasilinear preferences in a \textit{n}-player Bayesian game when the set of outcomes is
+    \begin{center}
+        $O = X \times R$
+    \end{center}
+    for a finite set X, and the utility of an agent \textit{i} given joint type $\theta$ is given by
+    \begin{center}
+        $u_i$(o,$\theta$) = $u_i$(x,$\theta$) - $f_i$($p_i$),
+    \end{center}
+    where $o = (x,p)$ is an element of $O, u_i : X \times \Theta \mapsto R$ is an arbitrary function  and $f_i : R \mapsto R$ is a strictly monotonically increasing function.
+\end{quote}
+Then we split the mechanism into a \textbf{choice rule} and a \textbf{payment rule}:
+\begin{center}
+    $u_i(o,\theta) = u_i(x,\theta) - f_i(p_i)$
+    \begin{itemize}
+        \item $x \in X$ is a discrete non-monetary outcome
+        \item $p_i \in R$ is a monetary payment that agent \textit{i} must make to the mechanism
+    \end{itemize}
+\end{center}
+For formulating this problem it is necessary, as we said before, to implement a mechanism so in this case we look at the definition of \textit{Mechanism in the quasilinear setting}:
+\begin{quote}
+    A mechanism in the quasilinear setting (for a Bayesian game setting($N, O = X \times R^n, \Theta, p, u$)) is a triple (A,x,p), where
+    \begin{itemize}
+        \item $A = A_1 \times \dots \times A_n$, where $A_i$ is the set of actions available to agent $i \in N$
+        \item $x : A \mapsto \Pi(X)$ maps each action profile to a distribution over choices, and
+        \item $p : A \mapsto R^n$ maps each action profile to a payment for each agent
+    \end{itemize}
+\end{quote}
+At this point we can exploit the definition of \textit{direct mechanism} when we ask to every agent \textit{i }to \textbf{declare} a valuation $v_i(x)$ for each choice $x \in X$. The goal of the problem is to lead users to declare the truth so now we look at the definition of \textit{Truthfulness} adapted for the quasilinear setting:
+\begin{quote}
+    A quasilinear mechanism is \textbf{truthful} if it is direct and $\forall i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy $\hat{v}_i = v_i$.
+\end{quote}
+We have also to pay attention to the fairly distribution of costs, so now we look at the definition of \textit{budget balance}:
+\begin{quote}
+    
+\end{quote}
+\begin{center}
+    
+\end{center}
+}
 \section{Best outcome}
 \section{Conclusion}
 \end{document}
