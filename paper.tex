@@ -7,20 +7,6 @@
 
 \begin{document}
 \maketitle
-\section{Rules}
-\begin{itemize}
-\Large{
-\item set of users \textit{U}
-\item set of locations \textit{L}
-\item set of utilities \textit{$u_i$} for each user \textit{i}
-\item set of maximum payments \textit{$m_i$} for each user \textit{i}
-\item set of proposes of users \textit{$p_u$(L, $U_i$, $m_i$)}
-\item set of distance of two locations \textit{distance($L_1$,$L_2$,d)}
-\item set of vehicles \textit{v(l, k, maximum\_length)} where \textit{k} is the number of users that the vehicle can accommodate and \textit{maximum\_length} is the bound in km of the tour with that vehicle   
-}
-\item set of costs proportional to the kilometers \textit{C\_km}
-\item set of fixed costs \textit{C\_fix}
-\end{itemize}
 \section{Goal}
 \Large{
 We have to select the user that will perform the tour, define the locations and the payments that are charged to the users. The only constraint that we have is the maximum payment. Costs proportional to kilometers should be fairly distributed and the fixed costs should be based on declared utilities, so first we have to implement a mechanisms that lead to truthfully declare utilities.
@@ -60,14 +46,32 @@ At this point we can exploit the definition of \textit{direct mechanism} when we
 \begin{quote}
     A quasilinear mechanism is \textbf{truthful} if it is direct and $\forall i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy $\hat{v}_i = v_i$.
 \end{quote}
-We have also to pay attention to the fairly distribution of costs, so now we look at the definition of \textit{budget balance}:
-\begin{quote}
-    
-\end{quote}
+We also pay attention to the economic part, so we look at the \textit{economic efficiency} also called \textit{\textbf{social-welfare maximization}}:
 \begin{center}
-    
+    $\forall v \forall x', \sum_{i} v_i(x) \ge \sum_{i} v_i(x')$
 \end{center}
+There is one mechanism that has dominant strategy \\(truthfulness) and efficiency, the \textit{\textbf{Groves mechanism}}:
+\begin{quote}
+    The Grove mechanism is a direct quasilinear \\mechanism ($\chi$,p) where
+    \begin{center}
+        $\chi(\hat{v}) = \arg \max_{x} \sum_{i} \hat{v}_i(x)$\\
+        $p_i(\hat{v}) = h_i(\hat{v}-_i) - \sum_{j \ne i} \hat{v}_j(\chi(\hat{v}))$
+    \end{center}
+\end{quote}
+Cooperative games -
+}\newpage
+\section{Rules}
+\begin{itemize}
+\Large{
+\item set of users \textit{U}
+\item set of locations \textit{L}
+\item set of utilities \textit{$u_i$} for each user \textit{i}
+\item set of maximum payments \textit{$m_i$} for each user \textit{i}
+\item set of proposes of users \textit{$p_u$(L, $U_i$, $m_i$)}
+\item set of distance of two locations \textit{distance($L_1$,$L_2$,d)}
+\item set of vehicles \textit{v(l, k, maximum\_length)} where \textit{k} is the number of users that the vehicle can accommodate and \textit{maximum\_length} is the bound in km of the tour with that vehicle   
 }
-\section{Best outcome}
-\section{Conclusion}
+\item set of costs proportional to the kilometers \textit{C\_km}
+\item set of fixed costs \textit{C\_fix}
+\end{itemize}
 \end{document}
