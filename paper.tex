@@ -3,7 +3,7 @@
 
 \title{Algorithmic Game Theory - Assignment}
 \author{Giada Gabriele}
-\date{25 February 2022}
+\date{2022}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \begin{document}
@@ -52,21 +52,36 @@ If we assume that agents' preferences are quasilinear we are in a setting in whi
     A mechanism in the quasilinear setting (for a Bayesian game setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a triple ($A,\chi,\wp$), where
     \begin{itemize}
         \item $A = A_1 \times \dots A_n$, where $A_i$ is the set of actions available to agent $i \in N$
-        \item $\chi : A \mapsto \Psi(X)$ maps each action profile to a distribution over choices, and
+        \item $\chi : A \mapsto \Pi(X)$ maps each action profile to a distribution over choices, and
         \item $\wp : A \mapsto \mathbb{R}^n$ maps each action profile to a payment for each agent.
     \end{itemize}
 \end{quote}
 We have split the function M in two functions, $\chi$ is a \textbf{choice rule} and $\wp$ is the \textbf{payment rule}. Now we exploit the \textbf{direct quasilinear mechanism} which is the only setting where each agent is asked to state his type.
 \begin{quote}
-    A direct quasilinear mechanism (for a Bayesian game setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a pair ($\chi,\wp$); it defines a standard mechanism in the quasilinear setting, where each \textit{i}, $A_i = \Theta_i$.
+    A direct quasilinear mechanism (for a Bayesian game\\ setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a pair ($\chi,\wp$);\\ it defines a standard mechanism in the quasilinear setting, where each \textit{i}, $A_i = \Theta_i$.
 \end{quote}
 At this point we make again assumption that agents' utilities depend only on their own types exploiting the property of \textbf{conditional utility independence}:
 \begin{quote}
     A Bayesian game exhibits conditional utility independence if for all agent $i \in N$, for all outcomes $o \in O$ and all pairs of joint types $\theta$ and $\theta' \in \Theta$ for which $\theta_i = \theta'_i$ it holds that $u_i(o,\theta) = u_i(o,\theta')$. 
 \end{quote}
-And again we go back at the definition of \textbf{Truthfulness}, in this case for a quasilinear mechanism:
+And again we go back at the definition of \textbf{truthfulness}, in this case for a quasilinear mechanism:
 \begin{quote}
-    A quasilinear mechanism is truthful if it is direct and $\forall _i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy $\hat{v}_i = v_i$.
+    A quasilinear mechanism is truthful if it is direct and $\forall _i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy\\ $\hat{v}_i = v_i$.
 \end{quote}
+Also we would like to have a mechanism that is \textbf{efficient} \\(quasilinear mechanism with a selected choice x such that,\newpage $\forall v \forall x'$, $\displaystyle \sum_{i} v_i > \displaystyle \sum_{i} v_i(x')$) and \textbf{budget balanced} (quasilinear mechanism when $\forall v,\displaystyle\sum_{i} \wp_i (s(v))$), but we know, according to what game theory says, that a cost-sharing mechanism dominant-strategy incentive compatible, budget balance and efficient, doesn't exists so we have to relax the efficiency to have at least the first two points.\\
+\\Now we can exploit \textbf{the Shapley value mechanism}, expecially the algorithm for computing allocation and payments:
+\begin{quote}
+    $S \leftarrow N^*$\\
+    \textbf{repeat}\\
+    $\vert$ Find multicast routing tree T(S)\\
+    $\vert$ Compute payments $p_i$ s.t. each agent \textit{i} pays an\\
+    $\vert$ equal share of the cost for every link in T(\{i\})\\
+    $\vert$ \textbf{foreach} $i \in S$ \textbf{do}\\
+    $\vert$ \qquad \textbf{if} $\hat{v}_i < p_i$ \textbf{then} $S \leftarrow S$ \textbackslash \{i\}\\
+    \textbf{until} no agents were dropped from S
+\end{quote}
+
 }
+\section{Rules}
+\section{Conclusion}
 \end{document}
