@@ -9,9 +9,9 @@
 \begin{document}
 
 \maketitle
-\section{Assignment goal}
+\section{Assignment}
 \large{
-The system has to select the user that will perform the tour; it has to define the locations that will be visited by the tour; and it has to define the payments that are charged to the users.
+The system has to select the user that will perform the tour; it has to define the locations that will be visited by the tour; and it has to define the payments that are charged to the users. The only constraint that we have is the maximum payment. Costs proportional to kilometers should be fairly distributed and the fixed costs should be based on declared utilities, so we have to implement a mechanisms that lead to truthfully declare utilities.
 }
 \section{Mechanism choice}
 \large{
@@ -27,7 +27,7 @@ We want to pay attention on the truthfulness of the game and we know that a \tex
 \begin{quote}
     If there exists any mechanism that implements a social choice function C in dominant strategies then there exists a direct mechanism that implements C in dominant strategy and is truthful.
 \end{quote}
-Given the revelation principle we can restrict our attention to truthful mechanism, the one that, for me, is more suitable is \textit{Quasilinear preferences}:
+Given the revelation principle we can restrict our attention to truthful mechanism, in this case the \textit{Quasilinear preferences}:
 \begin{quote}
     Agents have quasilinear preferences in a \textit{n}-player Bayesian game when the set of outcomes is
     \begin{center}
@@ -56,7 +56,7 @@ In this way agents care only about the choice selected and about their own payme
         \item $\wp : A \mapsto \mathbb{R}^n$ maps each action profile to a payment for each agent.
     \end{itemize}
 \end{quote}
-We have split the function M in two functions, $\chi$ is a \textbf{choice rule} and $\wp$ is the \textbf{payment rule}. Now we exploit the \textbf{direct quasilinear mechanism} which is the only setting where each agent is asked to state his type.
+We have split the function M in two functions, $\chi$ is a \textbf{choice rule} and $\wp$ is a \textbf{payment rule}. Now we exploit the \textbf{direct quasilinear mechanism} which is the only setting where each agent is asked to state his type.
 \begin{quote}
     A direct quasilinear mechanism (for a Bayesian game\\ setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a pair ($\chi,\wp$);\\ it defines a standard mechanism in the quasilinear setting, where each \textit{i}, $A_i = \Theta_i$.
 \end{quote}
