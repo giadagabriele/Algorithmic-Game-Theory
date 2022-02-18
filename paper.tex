@@ -1,17 +1,17 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
-\title{Algorithmic Game Theory - Assignment}
+\title{Algorithmic Game Theory}
 \author{Giada Gabriele}
-\date{2022}
+\date{February 25, 2022}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \begin{document}
 
 \maketitle
-\section{Goal}
+\section{Assignment goal}
 \large{
-We have to select the user that will perform the tour, define the locations and the payments that are charged to the users. The only constraint that we have is the maximum payment. Costs proportional to kilometers should be fairly distributed and the fixed costs should be based on declared utilities, so first we have to implement a mechanisms that lead to truthfully declare utilities.
+The system has to select the user that will perform the tour; it has to define the locations that will be visited by the tour; and it has to define the payments that are charged to the users.
 }
 \section{Mechanism choice}
 \large{
@@ -47,7 +47,7 @@ Then we split the mechanism into two pieces that are linearly related:
         \item $p_i \in R$ is a monetary payment that agent \textit{i} must make to the mechanism
     \end{itemize}
 \end{center}
-If we assume that agents' preferences are quasilinear we are in a setting in which the agents' degree of preferences for the selection of any choice $x \in X$ is independent from his degree of preference for having to pay the mehcanism some amount $p_i \in \mathbb{R}$. In this way agents care only about the choice selected and about their own payments, not about the monetary payments made by other agents; we have defined fixes set of agents.\newpage At this point we can define a \textbf{Quasilinear mechanism}:
+In this way agents care only about the choice selected and about their own payments, not about the monetary payments made by other agents.\newpage At this point we can define a \textbf{Quasilinear mechanism}:
 \begin{quote}
     A mechanism in the quasilinear setting (for a Bayesian game setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a triple ($A,\chi,\wp$), where
     \begin{itemize}
@@ -68,8 +68,11 @@ And again we go back at the definition of \textbf{truthfulness}, in this case fo
 \begin{quote}
     A quasilinear mechanism is truthful if it is direct and $\forall _i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy\\ $\hat{v}_i = v_i$.
 \end{quote}
-Also we would like to have a mechanism that is \textbf{efficient} \\(quasilinear mechanism with a selected choice x such that,\newpage $\forall v \forall x'$, $\displaystyle \sum_{i} v_i > \displaystyle \sum_{i} v_i(x')$) and \textbf{budget balanced} (quasilinear mechanism when $\forall v,\displaystyle\sum_{i} \wp_i (s(v))$), but we know, according to what game theory says, that a cost-sharing mechanism dominant-strategy incentive compatible, budget balance and efficient, doesn't exists so we have to relax the efficiency to have at least the first two points.\\
-\\Now we can exploit \textbf{the Shapley value mechanism}, expecially the algorithm for computing allocation and payments:
+Also we would like to have a mechanism that is \textbf{efficient} \\(quasilinear mechanism with a selected choice x such that,\newpage $\forall v \forall x'$, $\displaystyle \sum_{i} v_i > \displaystyle \sum_{i} v_i(x')$) and \textbf{budget balanced} (quasilinear mechanism when $\forall v,\displaystyle\sum_{i} \wp_i (s(v))$), but we know, according to what game theory says, that a mechanism dominant-strategy incentive compatible, budget balance and efficient, doesn't exists. We have to relax on of them, it means that now we are talking about \textit{weak budget balance}:
+\begin{center}
+    $\forall v, \sum_{i} \wp_i(s(v)) \ge 0$
+\end{center}
+Now we can look at what is \textbf{cost sharing} and in particular we can look at a special case of the \textit{Shapley value} from a coalitional game theory that is the \textbf{the Shapley value mechanism}. This leads to an algorithm that is useful for modeling the problem, for computing the allocations and payments:
 \begin{quote}
     $S \leftarrow N^*$\\
     \textbf{repeat}\\
@@ -82,6 +85,4 @@ Also we would like to have a mechanism that is \textbf{efficient} \\(quasilinear
 \end{quote}
 
 }
-\section{Rules}
-\section{Conclusion}
 \end{document}
