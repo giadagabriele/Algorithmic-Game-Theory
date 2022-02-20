@@ -10,24 +10,24 @@
 
 \maketitle
 \section{Assignment}
-\large{
-The system has to select the user that will perform the tour; it has to define the locations that will be visited by the tour; and it has to define the payments that are charged to the users. The only constraint that we have is the maximum payment. Costs proportional to kilometers should be fairly distributed and the fixed costs should be based on declared utilities, so we have to implement a mechanisms that lead to truthfully declare utilities.
+\Large{
+The system must select the user who will perform the tour, must define the places that the tour will visit and must define the payments charged to the users. The only constraint we have is the maximum payout. Costs proportional to kilometers should be equally distributed and fixed costs should be based on declared utilities, so we must implement mechanisms that lead to truthful declarations of utilities.
+}
+\section{Modeling of problem variables}
+\Large{
+To begin we must establish some variables of the problem, for example \textbf{how} to evaluate user preferences. Each user has a list of cities (the same for all) on which to express their preferences, \textbf{in what way?} Of course from a mathematical point of view this won't be exactly right, we could be more precise with a larger scale but for this example and to not complicate too much the explanation I prefer to stay on a classical ratings-style evaluation, choose a number from 1 to 5. \textbf{What is the criterion of optimality?} First of all, a city can be visited by a particular user if that user can afford to visit that city or that tour of cities, it cannot happen that a user declares a preference and then does not have the possibility to do so, we will demonstrate later how to calculate it. Each rating is equivalent to the utilities of a given city, so the tour that has the highest utility (the one that the majority prefers) wins. For the same utility (if this happens) the one with the lowest cost wins, as often happens in real life, the one on which you save the most wins. At the same cost, the tour that has more cities on the list wins, I would prefer to visit as many cities as possible, as well as have as many people as possible in the vehicle. Once the modeling criterion is established, we can look for the most consistent mechanism to solve this type of problem.
 }
 \section{Mechanism choice}
-\large{
+\Large{
 We start from the definition of \textbf{what} is a Mechanism:
 \begin{quote}
-    A \textit{Mechanism} (for a Bayesian game setting ($N,O,\Theta,p,u)$) is a pair (A,M), where
+    A \textit{Mechanism} (for a Bayesian game setting\\ ($N,O,\Theta,p,u)$) is a pair (A,M), where
     \begin{itemize}
         \item A = $A_1 \times \dots A_n$, where $A_i$ is the set of actions available to agent $i \in N$; and
         \item M : $A \mapsto \Pi(O)$ maps each action profile to a distribution outcomes.
     \end{itemize}
 \end{quote}
-We want to pay attention on the truthfulness of the game and we know that a \textit{direct mechanism} is one in which the only action to each agent is to announce his private information. Since in a Bayesian game an agent's private information is his type, direct mechanism have $A_i = \Theta_i$, so a direct mechanism is said to be truthful (or incentive compatible) if, for any type vector $\theta$, in equilibrium of the game defined by the mechanism every agent \textit{i}'s strategy is to announce his true type, so that $\hat{\theta}_i = \theta_i$.\newpage Now we can exploit the definition of \textbf{Revelation principle}:
-\begin{quote}
-    If there exists any mechanism that implements a social choice function C in dominant strategies then there exists a direct mechanism that implements C in dominant strategy and is truthful.
-\end{quote}
-Given the revelation principle we can restrict our attention to truthful mechanism, in this case the \textit{Quasilinear preferences}:
+We want to pay attention on the truthfulness of the game and we know that a \textit{direct mechanism} is one in which the only action to each agent is to announce his private information. Since in a Bayesian game an agent's private information is his type, direct mechanism have $A_i = \Theta_i$, so a direct mechanism is said to be truthful (or incentive compatible) if, for any type vector $\theta$, in equilibrium of the game defined by the mechanism every agent \textit{i}'s strategy is to announce his true type, so that $\hat{\theta}_i = \theta_i$. We can restrict our attention to truthful mechanism, in this case the \textit{Quasilinear preferences}:
 \begin{quote}
     Agents have quasilinear preferences in a \textit{n}-player Bayesian game when the set of outcomes is
     \begin{center}
@@ -44,10 +44,10 @@ Then we split the mechanism into two pieces that are linearly related:
     $u_i(o,\theta) = u_i(x,\theta) - f_i(p_i)$
     \begin{itemize}
         \item $x \in X$ is a discrete non-monetary outcome
-        \item $p_i \in R$ is a monetary payment that agent \textit{i} must make to the mechanism
+        \item $p_i \in R$ is a monetary payment that agent \textit{i} must make to the mechanism\newpage
     \end{itemize}
 \end{center}
-In this way agents care only about the choice selected and about their own payments, not about the monetary payments made by other agents.\newpage At this point we can define a \textbf{Quasilinear mechanism}:
+In this way agents care only about the choice selected and about their own payments, not about the monetary payments made by other agents. At this point we can define a \textbf{Quasilinear mechanism}:
 \begin{quote}
     A mechanism in the quasilinear setting (for a Bayesian game setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a triple ($A,\chi,\wp$), where
     \begin{itemize}
@@ -58,7 +58,7 @@ In this way agents care only about the choice selected and about their own payme
 \end{quote}
 We have split the function M in two functions, $\chi$ is a \textbf{choice rule} and $\wp$ is a \textbf{payment rule}. Now we exploit the \textbf{direct quasilinear mechanism} which is the only setting where each agent is asked to state his type.
 \begin{quote}
-    A direct quasilinear mechanism (for a Bayesian game\\ setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a pair ($\chi,\wp$);\\ it defines a standard mechanism in the quasilinear setting, where each \textit{i}, $A_i = \Theta_i$.
+    A direct quasilinear mechanism (for a Bayesian game setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a pair ($\chi,\wp$); it defines a standard mechanism in the quasilinear setting, where each \textit{i}, $A_i = \Theta_i$.
 \end{quote}
 At this point we make again assumption that agents' utilities depend only on their own types exploiting the property of \textbf{conditional utility independence}:
 \begin{quote}
@@ -66,23 +66,21 @@ At this point we make again assumption that agents' utilities depend only on the
 \end{quote}
 And again we go back at the definition of \textbf{truthfulness}, in this case for a quasilinear mechanism:
 \begin{quote}
-    A quasilinear mechanism is truthful if it is direct and $\forall _i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy\\ $\hat{v}_i = v_i$.
+    A quasilinear mechanism is truthful if it is direct and $\forall _i \forall v_i$, agent \textit{i}'s equilibrium strategy is to adopt the strategy $\hat{v}_i = v_i$.
 \end{quote}
-Also we would like to have a mechanism that is \textbf{efficient} \\(quasilinear mechanism with a selected choice x such that,\newpage $\forall v \forall x'$, $\displaystyle \sum_{i} v_i > \displaystyle \sum_{i} v_i(x')$) and \textbf{budget balanced} (quasilinear mechanism when $\forall v,\displaystyle\sum_{i} \wp_i (s(v))$), but we know, according to what game theory says, that a mechanism dominant-strategy incentive compatible, budget balance and efficient, doesn't exists. We have to relax on of them, it means that now we are talking about \textit{weak budget balance}:
-\begin{center}
-    $\forall v, \sum_{i} \wp_i(s(v)) \ge 0$
-\end{center}
-Now we can look at what is \textbf{cost sharing} and in particular we can look at a special case of the \textit{Shapley value} from a coalitional game theory that is the \textbf{the Shapley value mechanism}. This leads to an algorithm that is useful for modeling the problem, for computing the allocations and payments:
+Established what is truthful for game theory, we can analyze the part relating to costs, \textit{cost sharing}, in particular the most coherent choice for this type of problem is to look at  \textbf{coalitional games} and \textbf{Shapley value}; let's go in order.\\\\
+What is a coalitional game:
 \begin{quote}
-    $S \leftarrow N^*$\\
-    \textbf{repeat}\\
-    $\vert$ Find multicast routing tree T(S)\\
-    $\vert$ Compute payments $p_i$ s.t. each agent \textit{i} pays an\\
-    $\vert$ equal share of the cost for every link in T(\{i\})\\
-    $\vert$ \textbf{foreach} $i \in S$ \textbf{do}\\
-    $\vert$ \qquad \textbf{if} $\hat{v}_i < p_i$ \textbf{then} $S \leftarrow S$ \textbackslash \{i\}\\
-    \textbf{until} no agents were dropped from S
+    In coalitional game theory our focus is on what groups of agents, rather than individual agents, can achieve. Given a set of agents, a coalitional game defines how well each group (or coalition) of agents can do for itself. We are not concerned with how the agents make individual choices \\within a coalition, how they coordinate, or any other such detail; we simply take the payoff (or costs, this definition is valuable also for costs - that is our case) to a coalition as given.
 \end{quote}
-
+Now we can define some aspects related to the division of costs, starting from the definition of \textbf{feasible payoff}:
+\begin{quote}
+    Given a coalitional game (N,v), the feasible payoff set is defined as 
+    \begin{center}
+        \{$x \in \mathbb{R}^N \vert \sum_{i\in N} x_i \le v(N)$\}
+    \end{center}
+\end{quote}
+this set contains all payoff vectors that do not distribute more than the worth of the grand coalition. We can view this as requiring the payoffs to be \textbf{weakly budget balanced}. This balance aspect responds to the goal we set ourselves at the beginning.
+\\Therefore for this kind of issue we need to think about group of people who wants to maximize utilities and obtain as outcome the most convenient tour. Now we can exploit the definition of \textbf{Shapley Value}:
 }
 \end{document}
