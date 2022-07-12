@@ -13,10 +13,6 @@
 \Large{
 The system must select the user who will perform the tour, must define the places that the tour will visit and must define the payments charged to the users. The only constraint we have is the maximum payout. Costs proportional to kilometers should be equally distributed and fixed costs should be based on declared utilities, so we must implement mechanisms that lead to truthful declarations of utilities.
 }
-\section{Modeling of problem variables}
-\Large{
-To begin we must establish some variables of the problem, for example \textbf{how} to evaluate user preferences. Each user has a list of cities, with fixed costs necessary to visit them (the same for all) on which to express their preferences, \textbf{in what way?} Of course from a mathematical point of view this won't be exactly right, we could be more precise with a larger scale but for this example and to not complicate too much the explanation I prefer to stay on a classical ratings-style evaluation, choose a number from 1 to 5. \textbf{What's our best outcome?} First of all, a city can be visited by a particular user if that user can afford to visit that city or that tour of cities, it cannot happen that a user declares a preference and then does not have the possibility to do so, we will demonstrate later how to calculate it. Each rating is equivalent to the utilities of a given city, so the tour that has the highest utility (the one that the majority prefers) wins. For the same utility (if this happens) the one with the lowest cost wins, as often happens in real life, the one on which you save the most wins. At the same cost, the tour that has more cities on the list wins, I would prefer to visit as many cities as possible, as well as have as many people as possible in the vehicle. Once the modeling criterion is established, we can look for the most consistent mechanism to solve this type of problem.
-}
 \section{Hypothetical mechanism choice}
 \Large{
 In this section we will show how we arrived at the choice of the mechanism. Studying game theory and related theorems this is the theoretical process that led to the final choice.\\
@@ -38,14 +34,14 @@ We want to pay attention on the truthfulness of the game and we know that a \tex
     \begin{center}
         $u_i$(o,$\theta$) = $u_i$(x,$\theta$) - $f_i$($p_i$),
     \end{center}
-    where $o = (x,p)$ is an element of $O, u_i : X \times \Theta \mapsto \mathbb{R}$ is an arbitrary function  and $f_i : \mathbb{R} \mapsto \mathbb{R}$ is a strictly monotonically increasing function.
+    where $o = (x,p)$ is an element of $O,\\ u_i : X \times \Theta \mapsto \mathbb{R}$ is an arbitrary function  and $f_i : \mathbb{R} \mapsto \mathbb{R}$ is a strictly monotonically increasing function.
 \end{quote}
 Then we split the mechanism into two pieces that are linearly related:
 \begin{center}
     $u_i(o,\theta) = u_i(x,\theta) - f_i(p_i)$
     \begin{itemize}
         \item $x \in X$ is a discrete non-monetary outcome
-        \item $p_i \in R$ is a monetary payment that agent \textit{i} must make to the mechanism\newpage
+        \item $p_i \in R$ is a monetary payment that agent \textit{i} must make to the mechanism
     \end{itemize}
 \end{center}
 In this way agents care only about the choice selected and about their own payments, not about the monetary payments made by other agents. At this point we can define a \textbf{Quasilinear mechanism}:
@@ -61,9 +57,9 @@ We have split the function M in two functions, $\chi$ is a \textbf{choice rule} 
 \begin{quote}
     A direct quasilinear mechanism (for a Bayesian game setting($N,O = X \times \mathbb{R}^n,\Theta,p,u$)) is a pair ($\chi,\wp$); it defines a standard mechanism in the quasilinear setting, where each \textit{i}, $A_i = \Theta_i$.
 \end{quote}
-At this point we make again assumption that agents' utilities depend only on their own types exploiting the property of \textbf{conditional utility independence}:
+At this point we make again assumption that agents' utilities depend only on their own types exploiting the\newpage property of \textbf{conditional utility independence}:
 \begin{quote}
-    A Bayesian game exhibits conditional utility independence if for all agent $i \in N$, for all outcomes $o \in O$ and all pairs of joint types $\theta$ and $\theta' \in \Theta$ for which $\theta_i = \theta'_i$ it holds that $u_i(o,\theta) = u_i(o,\theta')$. 
+    A Bayesian game exhibits conditional utility independence if for all agent $i \in N$, for all outcomes $o \in O$ and all pairs of joint types $\theta$ and $\theta' \in \Theta$ for which $\theta_i = \theta'_i$ it holds that \\ $u_i(o,\theta) = u_i(o,\theta')$. 
 \end{quote}
 And again we go back at the definition of \textbf{truthfulness}, in this case for a quasilinear mechanism:
 \begin{quote}
@@ -92,12 +88,15 @@ this set contains all payoff vectors that do not distribute more than the worth 
     \end{center}
     This expression can be viewed as capturing \\the “average marginal contribution” of agent i, where we average over all the different sequences according to which the grand coalition could be built up from the empty coalition.
 \end{quote}
-At this point we have to clarify some variables in order to be able to respond to the problem requests.\\
-The assignment says that we have to create a game in which a group of people, using a vehicle with \textbf{k} sits, do a tour in some cities. Now we have the cities according to what we declared in section 2, but we didn't shaped the problems based on the k constraint. So, exploiting the Shapley value formula we have to change the N variable, in our case it will be:
+}
+\section{Application theory}
+\Large{
+We must establish some variables of the problem, for example \textbf{how} to evaluate user preferences. Each user has a list of cities, with fixed costs necessary to visit them (the same for all) on which to express their preferences, \textbf{in what way?} Of course from a mathematical point of view this won't be exactly right, we could be more precise with a larger scale but for this example and to not complicate too much the explanation I prefer to stay on a classical ratings-style evaluation, choose a number from 1 to 5. \textbf{What's our best outcome?} First of all, a city can be visited by a particular user if that user can afford to visit that city or that tour of cities, it cannot happen that a user declares a preference and then does not have the possibility to do so, we will demonstrate in the next paragraph how to calculate it. Each rating is equivalent to the utilities of a given city, so the tour that has the highest utility (the one that the majority prefers) wins. For the same utility (if this happens) the one with the lowest cost wins, as often happens in real life, the one on which you save the most wins. At the same cost, the tour that has more cities on the list wins, I would prefer to visit as many cities as possible, as well as have as many people as possible in the vehicle. \\\\At this point we have to clarify some variables in order to be able to respond to the problem requests in the application example part.\\\\
+The assignment says that we have to create a game in which a group of people, using a vehicle with \textbf{k} sits, do a tour in some cities. We have the cities but we didn't shaped the problems based on the k constraint. So, exploiting the Shapley value formula we have to change \newpage the N variable, in our case it will be:
 \begin{center}
     $\displaystyle\sum_{p=1}^k \binom {{\vert N \vert}} {p}$
 \end{center}
-So in this way we will calculate all the possible games with a group of people $\le$ k, we remain in the coalition game setting and after calculate all the possibilities we will find our best outcome. We have also to define our \textbf{characteristic function}, \textit{v}: it's \textbf{the cost} of the winning tour. What does Shapley value allow us to do indeed? We will have as a result the cost of every game and understand if that is a \textbf{valid} game, people can afford it, or not. In this way we have also a \textbf{fair} game.We don't want any participant to be unhappy, so even if the sum of declared utilities is enough to go on a certain tour is \textit{unfair} if anyone pay, for example, 200 and an other one pay 10 just because the value of the tour is 210, everyone must pay in an "equal" way. Exploiting the Shapley value, according to what we said before, we start from the bottom, from an empty group, then we calculate the cost of singleton, then couple, etc, in this way passing through singleton we know that everyone in the game can afford it. As the cost of singleton we can pick the cost of the tour with the maximum utility.The Shapley value defined a fair way of dividing the grand coalition’s payment among its members. Also it is not convienent to lie on preferences because if you can afford to go to both Milan and Rome and give 5 to Milan and 4 to Rome and you really want to go to Rome, if Milan wins with maximum utility you go to Milan, it makes no sense, given the statements made, don't tell the truth. However, this analysis ignored questions of stability so we have to define what is the \textbf{core}:
+So in this way we will calculate all the possible games with a group of people $\le$ k, we remain in the coalition game setting and after calculate all the possibilities we will find our best outcome. We have also to define our \textbf{characteristic function}, \textit{v}: it's \textbf{the cost} of the winning tour. What does Shapley value allow us to do indeed? We will have as a result the cost of every game and understand if that is a \textbf{valid} game, people can afford it, or not. In this way we have also a \textbf{fair} game. We don't want any participant to be unhappy, so even if the sum of declared utilities is enough to go on a certain tour is \textit{unfair} if anyone pay, for example, 200 and an other one pay 10 just because the value of the tour is 210, everyone must pay in an "equal" way. Exploiting the Shapley value we start from the bottom, from an empty group, then we calculate the cost of singleton, then couple, etc, in this way passing through singleton we know that everyone in the game can afford it. As the cost of singleton we can pick the cost of the tour with the maximum utility. The Shapley value defined a fair way of dividing the grand coalition’s payment among its members. Also it is not convienent to lie on preferences because if you can afford to go to both Milan and Rome and give 5 to Milan and 4 to Rome and you really want to go to Rome, if Milan wins with maximum utility you go to Milan, it makes no sense, given the statements made, don't tell the truth. However, this analysis ignored questions of stability so we have to define what is the \textbf{core}:
 \begin{quote}
     A payoff vector x is in the core of a coalitional game (N,v) if and only if
     \begin{center}
@@ -105,7 +104,7 @@ So in this way we will calculate all the possible games with a group of people $
     \end{center}
     Thus, a payoff is in the core if and only if no sub-coalition has an incentive to break away from the grand coalition and share the payoff it is able to obtain independently.\\
 \end{quote}
-At this point we have to clarify some issues.\\
+At this point we have to clarify some issues.\\\\
 We know that Shapley value can be used only in a \textbf{convex} game but we didn't defined the game as convex. There are two theorems about this concept:
 \begin{quote}
     (1) Every convex game has a nonempty core.\\\\
@@ -114,7 +113,6 @@ We know that Shapley value can be used only in a \textbf{convex} game but we did
 \end{quote}
 So we are not able to define and be sure that this game is convex, we assume that and we declare that the Shapley value is in the core based on these theorems.
 }
-\section{Application theory}
 \section{Application example}
 \Large{
 Let's suppose we have 2 people - Alice and Bob, and 3 cities - Milan(M), Rome(R) and Florence(F). Alice and Bob will declare a utility related to each city, like:
@@ -149,9 +147,7 @@ Alice has 250 as maximum payment, Bob has 350. The costs related to cities are:
  \hline
 \end{tabular}
 \end{center}
-Now we have to calculate \textit{v}. The empty group has v = 0, then \\\\
-v(\{A\}) = 200\\
-we look at utilities and we know where she prefers to go, then we look at the "wallet" and we know if she can afford it, in this case Florence it's the "least desirable" but is the only one; same reasoning for Bob.\\
+Now we have to calculate \textit{v}. \\The empty group has v = 0, then \\v(\{A\}) = 200, \\we look at utilities and we know where she prefers to go, then we look at the "wallet" and we know if she can afford it, in this case Florence it's the "least desirable" but is the only one; same reasoning for Bob.\\
 v(\{B\}) = 300 (he can afford to go to Rome, and he prefers Rome to Florence)\\
 v(\{A\} $\cup$ \{B\}) = \textbf{?} \\\\
 We calculate the value of the group using \textit{Shapley value}.\\
