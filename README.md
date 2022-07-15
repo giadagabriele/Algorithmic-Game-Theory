@@ -1,5 +1,6 @@
 # Algorithmic-Game-Theory
-Assignment - Università della Calabria<br>
-(<b>in progress</b>)
-
-AGT book: http://www.masfoundations.org/download.html
+Assignment - Università della Calabria<br><br>
+Source book: http://www.masfoundations.org/download.html
+<br>
+paper made with | <img src="https://github.com/giadagabriele/Algorithmic-Game-Theory/blob/main/overleaf.png" height="70px"/>
+------------- | -------------
