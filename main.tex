@@ -114,12 +114,22 @@ We know that Shapley value can be used only in a \textbf{convex} game but we did
     (2) In every convex game, the Shapley value is in the core.
 \end{quote}
 So we are not able to define and be sure that this game is convex, we assume that and we declare that the Shapley value is in the core based on these theorems.\\\\
-Summarizing, to solve our problem we need the following variables:
+Summarizing, to solve our problem we have the following rules and variables:
 \begin{itemize}
-    \item preferences (utility) : 1 to 5
-    \item v : cost of each city - fixed and given as input
-    \item N : maximum number of possible games
-    \item  $\displaystyle\sum_{p=1}^k \binom {{\vert N \vert}} {p}$ : possible games in a maximum of k vehicle seats
+    \item preferences (utilities) from 1 to 5
+    \begin{itemize}
+        \item for the same utility the one with the lowest cost wins; at the same cost I would prefer to visit as many cities as possible, as well as have as many people as possible in the vehicle.
+    \end{itemize}
+    \item a city can be visited by a particular user if that user can afford to visit that city or that tour of cities
+    \item list of cities with fixed costs
+     \begin{itemize}
+        \item v is the characteristic function that is equivalent to the cost of each city, consequently it will be the cost of the winning tour
+    \end{itemize}
+    \item cost of singleton is equal to the cost of the tour with the maximum utility (always if the user can afford it)
+    \item  $\displaystyle\sum_{p=1}^k \binom {{\vert N \vert}} {p}$ possible games in a maximum of k vehicle seats
+     \begin{itemize}
+        \item N is the maximum number of possible games
+    \end{itemize}
 \end{itemize}
 }
 \section{Application workflow}
@@ -128,6 +138,7 @@ Summarizing, to solve our problem we need the following variables:
   \includegraphics[width=\linewidth]{workflow.png}
   \label{fig:workflow}
 \end{figure}
+\newpage
 \section{Application example}
 \Large{
 Let's suppose we have 2 people - Alice and Bob, and 3 cities - Milan(M), Rome(R) and Florence(F). Alice and Bob will declare a utility related to each city, like:
@@ -140,7 +151,7 @@ Let's suppose we have 2 people - Alice and Bob, and 3 cities - Milan(M), Rome(R)
  \hline
  Bob & 5 & 4 & 2\\ 
  \hline
-\end{tabular}\newpage
+\end{tabular}
 \end{center}
 Alice has 250 as maximum payment, Bob has 350. The costs related to cities are:
 \begin{center}
