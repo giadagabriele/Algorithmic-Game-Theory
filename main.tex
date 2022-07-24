@@ -18,15 +18,15 @@ The system must select the user who will perform the tour, must define the place
 \section{Hypothetical mechanism choice}
 \Large{
 In this section we will show how we arrived at the choice of the mechanism. Studying game theory and related theorems this is the theoretical process that led to the final choice.\\
-We start from the definition of \textbf{what} is a Mechanism:
+We start from the definition of what is a \textbf{Mechanism}:
 \begin{quote}
-    A \textit{Mechanism} (for a Bayesian game setting\\ ($N,O,\Theta,p,u)$) is a pair (A,M), where
+    A Mechanism (for a Bayesian game setting\\ ($N,O,\Theta,p,u)$) is a pair (A,M), where
     \begin{itemize}
         \item A = $A_1 \times \dots A_n$, where $A_i$ is the set of actions available to agent $i \in N$; and
         \item M : $A \mapsto \Pi(O)$ maps each action profile to a distribution outcomes.
     \end{itemize}
 \end{quote}
-We want to pay attention on the truthfulness of the game and we know that a \textit{direct mechanism} is one in which the only action to each agent is to announce his private information. Since in a Bayesian game an agent's private information is his type, direct mechanism have $A_i = \Theta_i$, so a direct mechanism is said to be truthful (or incentive compatible) if, for any type vector $\theta$, in equilibrium of the game defined by the mechanism every agent \textit{i}'s strategy is to announce his true type, so that $\hat{\theta}_i = \theta_i$. We can restrict our attention to truthful mechanism,\newpage in this case the \textit{Quasilinear preferences}:
+We want to pay attention on the truthfulness of the game and we know that a \textbf{direct mechanism} is one in which the only action to each agent is to announce his private information. Since in a Bayesian game an agent's private information is his type, direct mechanism have $A_i = \Theta_i$, so a direct mechanism is said to be truthful (or incentive compatible) if, for any type vector $\theta$, in equilibrium of the game defined by the mechanism every agent \textit{i}'s strategy is to announce his true type, so that $\hat{\theta}_i = \theta_i$. We can restrict our attention to truthful mechanism,\newpage in this case the \textbf{Quasilinear preferences}:
 \begin{quote}
     Agents have quasilinear preferences in a \textit{n}-player Bayesian game when the set of outcomes is
     \begin{center}
@@ -70,7 +70,7 @@ And again we go back at the definition of \textbf{truthfulness}, in this case fo
 Established what is truthful for game theory, we can analyze the part relating to costs, \textit{cost sharing}, in particular the most coherent choice for this type of problem is to look at  \textbf{coalitional games} and \textbf{Shapley value}; let's go in order.\\\\
 What is a coalitional game:
 \begin{quote}
-    In coalitional game theory our focus is on what groups of agents, rather than individual agents, can achieve. Given a set of agents, a coalitional game defines how well each group (or coalition) of agents can do for itself. We are not concerned with how the agents make individual choices \\within a coalition, how they coordinate, or any other such detail; we simply take the payoff (or costs, this definition is valuable also for costs - that is our case) to a coalition as given.
+    In coalitional game theory our focus is on what groups of agents, rather than individual agents, can achieve. Given a set of agents, a coalitional game defines how well each group (or coalition) of agents can do for itself. We are not concerned with how the agents make individual choices within a coalition, how they coordinate, or any other such detail; we simply take the payoff (or costs, this definition is valuable also for costs - that is our case) to a coalition as given.
 \end{quote}
 Now we can define some aspects related to the division of costs, starting from the definition of \textbf{feasible payoff}:
 \begin{quote}
@@ -88,7 +88,7 @@ this set contains all payoff vectors that do not distribute more than the worth 
         $\phi_i(N,v) = \frac{1}{\vert N \vert !} \displaystyle \sum_{S \subseteq \vert N \vert \backslash \{i\}} \vert S \vert!(\vert N \vert -  \vert S \vert - 1)! [v(S \cup \{i\}) - v(S)]$.
     }
     \end{center}
-    This expression can be viewed as capturing \\the “average marginal contribution” of agent i, where we average over all the different sequences according to which the grand coalition could be built up from the empty coalition.
+    This expression can be viewed as capturing the “average marginal contribution” of agent i, where we average over all the different sequences according to which the grand coalition could be built up from the empty coalition.
 \end{quote}
 }
 \section{Application theory}
@@ -98,7 +98,7 @@ The assignment says that we have to create a game in which a group of people, us
 \begin{center}
     $\displaystyle\sum_{p=1}^k \binom {{\vert N \vert}} {p}$
 \end{center}
-So in this way we will calculate all the possible games with a group of people $\le$ k, we remain in the coalition game setting and after calculate all the possibilities we will find our best outcome. We have also to define our \textbf{characteristic function}, \textit{v}: it's \textbf{the cost} of the winning tour. What does Shapley value allow us to do indeed? We will have as a result the cost of every game and understand if that is a \textbf{valid} game, people can afford it, or not. In this way we have also a \textbf{fair} game. We don't want any participant to be unhappy, so even if the sum of declared utilities is enough to go on a certain tour is \textit{unfair} if anyone pay, for example, 200 and an other one pay 10 just because the value of the tour is 210, everyone must pay in an "equal" way. Exploiting the Shapley value we start from the bottom, from an empty group, then we calculate the cost of singleton, then couple, etc, in this way passing through singleton we know that everyone in the game can afford it. As the cost of singleton we can pick the cost of the tour with the maximum utility. The Shapley value defined a fair way of dividing the grand coalition’s payment among its members. Also it is not convienent to lie on preferences because if you can afford to go to both Milan and Rome and give 5 to Milan and 4 to Rome and you really want to go to Rome, if Milan wins with maximum utility you go to Milan, it makes no sense, given the statements made, don't tell the truth. However, this analysis ignored questions of stability so we have to define what is the \textbf{core}:
+So in this way we will calculate all the possible games with a group of people $\le$ k, we remain in the coalition game setting and after calculate all the possibilities we will find our best outcome. We have also to define our \textbf{characteristic function}, \textit{v}: it's \textbf{the cost} of the winning tour. What does Shapley value allow us to do indeed? We will have as a result the cost of every game and understand if that is a \textbf{valid} game, people can afford it, or not. In this way we have also a \textbf{fair} game. We don't want any participant to be unhappy, so even if the sum of declared utilities is enough to go on a certain tour is \textbf{unfair} if anyone pay, for example, 200 and an other one pay 10 just because the value of the tour is 210, everyone must pay in an  “equal” way. Exploiting the Shapley value we start from the bottom, from an empty group, then we calculate the cost of singleton, then couple, etc, in this way passing through singleton we know that everyone in the game can afford it. As the cost of singleton we can pick the cost of the tour with the maximum utility. The Shapley value defined a fair way of dividing the grand coalition’s payment among its members. Also it is not convienent to lie on preferences because if you can afford to go to both Milan and Rome and give 5 to Milan and 4 to Rome and you really want to go to Rome, if Milan wins with maximum utility you go to Milan, it makes no sense, given the statements made, don't tell the truth. However, this analysis ignored questions of stability so we have to define what is the \textbf{core}:
 \begin{quote}
     A payoff vector x is in the core of a coalitional game (N,v) if and only if
     \begin{center}
@@ -128,7 +128,7 @@ Summarizing, to solve our problem we have the following rules and variables:
     \item cost of singleton is equal to the cost of the tour with the maximum utility (always if the user can afford it)
     \item  $\displaystyle\sum_{p=1}^k \binom {{\vert N \vert}} {p}$ possible games in a maximum of k vehicle seats
      \begin{itemize}
-        \item N is the maximum number of possible games
+        \item M is the maximum number of possible games
     \end{itemize}
 \end{itemize}
 }
@@ -173,7 +173,7 @@ Alice has 250 as maximum payment, Bob has 350. The costs related to cities are:
  \hline
 \end{tabular}
 \end{center}
-Now we have to calculate \textit{v}. \\The empty group has v = 0, then \\v(\{A\}) = 200, \\we look at utilities and we know where she prefers to go, then we look at the "wallet" and we know if she can afford it, in this case Florence it's the "least desirable" but is the only one; same reasoning for Bob.\\
+Now we have to calculate \textit{v}. \\The empty group has v = 0, then \\v(\{A\}) = 200, \\we look at utilities and we know where she prefers to go, then we look at the “wallet” and we know if she can afford it, in this case Florence it's the “least desirable” but is the only one; same reasoning for Bob.\\
 v(\{B\}) = 300 (he can afford to go to Rome, and he prefers Rome to Florence)\\
 v(\{A\} $\cup$ \{B\}) = \textbf{?} \\\\
 We calculate the value of the group using \textit{Shapley value}.\\
@@ -190,5 +190,11 @@ S(\{A\}) = $\frac {500 - 300} {2}$ + $\frac {200 - 0} {2}$  = 200
 \end{quote}
 S(\{B\}) = $\frac {500 - 200} {2}$ + $\frac {300 - 0} {2}$ = 300
 }
-\\\\Both are valid because S(\{A\}) = 200 $<$ 250 (Alice's "wallet") and \\S(\{B\}) = 300 $<$ 350 (Bob's "wallet"). \\\\If these conditions were not met we had to calculate the next tour with the major utility. Of course from a computer science point of view this is not an ideal condition, being recursive, having to calculate everything every time and being able to fall into a very large case is expensive (computationally speaking) but it is still a concrete solution to solve this type of problem.
+\\\\Both are valid because S(\{A\}) = 200 $<$ 250 (Alice's “wallet”) and \\S(\{B\}) = 300 $<$ 350 (Bob's “wallet”). \\\\If these conditions were not met we had to calculate the next tour with the major utility.
+
+\section{Conclusions}
+\Large{
+Of course from a computer science point of view this is not an ideal
+condition, being recursive, having to calculate everything every time and being able to fall into a very large case is expensive (computationally speaking) but it is still a concrete solution to solve this type of problem.
+}
 \end{document}
